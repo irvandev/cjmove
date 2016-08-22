@@ -20,9 +20,9 @@ var urlMyProfile = '';  // set if you have no profile gadget on page
 //
 var cropAvatar = true;
 var sizeAvatar = 48;
-var urlNoAvatar = "http://lh4.googleusercontent.com/-069mnq7DV_g/TvgRrBI_JaI/AAAAAAAAAic/Iot55vywnYw/s"+sizeAvatar+"/avatar_blue_m_96.png"; // http://www.blogger.com/img/avatar_blue_m_96.png resizeable
+var urlNoAvatar = "https://lh4.googleusercontent.com/-069mnq7DV_g/TvgRrBI_JaI/AAAAAAAAAic/Iot55vywnYw/s"+sizeAvatar+"/avatar_blue_m_96.png"; // http://www.blogger.com/img/avatar_blue_m_96.png resizeable
 //
-var urlAnoAvatar = 'http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=' + sizeAvatar;
+var urlAnoAvatar = 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=' + sizeAvatar;
 var maxResultsPosts = "";       // or for example "&max-results=100"
 var maxResultsComments = "";    // or for example "&max-results=300"
 // CONFIG END
@@ -142,19 +142,19 @@ function showRecentComments(json) {
         authorUri = entry.author[0].uri.$t;
     
       var avaimg = urlAnoAvatar;
-      var bloggerprofile = "http://www.blogger.com/profile/";
+      var bloggerprofile = "https://www.blogger.com/profile/";
       if(trueAvatars && entry.author[0].gd$image && entry.author[0].gd$image.src && authorUri.substr(0,bloggerprofile.length) == bloggerprofile)
         avaimg = entry.author[0].gd$image.src;
       else {
         var parseurl = document.createElement('a');
         if(authorUri != "") {
           parseurl.href = authorUri;
-          avaimg = 'http://www.google.com/s2/favicons?domain=' + parseurl.hostname;
+          avaimg = 'https://www.google.com/s2/favicons?domain=' + parseurl.hostname;
         }
       }
       if(urlMyProfile != "" && authorUri == urlMyProfile && urlMyAvatar != "")
         avaimg = urlMyAvatar;
-      if(avaimg == "http://img2.blogblog.com/img/b16-rounded.gif" && urlNoAvatar != "")
+      if(avaimg == "https://img2.blogblog.com/img/b16-rounded.gif" && urlNoAvatar != "")
         avaimg = urlNoAvatar;
       var newsize="s"+sizeAvatar;
       avaimg = avaimg.replace(/\/s\d\d+-c\//, "/"+newsize+"-c/");
@@ -197,5 +197,5 @@ function showRecentComments(json) {
   }
 }
 if(getTitles)
-  document.write('<script type="text/javascript" src="http://'+window.location.hostname+'/feeds/posts/summary?redirect=false'+maxResultsPosts+'&alt=json-in-script&callback=getPostUrlsForComments"></'+'script>');
-document.write('<script type="text/javascript" src="http://'+window.location.hostname+'/feeds/comments/default?redirect=false'+maxResultsComments+'&alt=json-in-script&callback=showRecentComments"></'+'script>');
+  document.write('<script type="text/javascript" src="//'+window.location.hostname+'/feeds/posts/summary?redirect=false'+maxResultsPosts+'&alt=json-in-script&callback=getPostUrlsForComments"></'+'script>');
+document.write('<script type="text/javascript" src="//'+window.location.hostname+'/feeds/comments/default?redirect=false'+maxResultsComments+'&alt=json-in-script&callback=showRecentComments"></'+'script>');
